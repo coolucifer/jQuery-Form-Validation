@@ -3,7 +3,7 @@ $(function () {
 
   window.Input = function (selector) {
 
-    var $ele,
+    var $ele,  //这个selector代表的元素
       $error_ele,
       me = this,
       rule = {
@@ -45,6 +45,7 @@ $(function () {
       return '#' + $ele.attr('name') + '-input-error';
     }
 
+    //确定$ele是哪个
     function find_ele() {
       if (selector instanceof jQuery) {
         $ele = selector;
@@ -55,21 +56,21 @@ $(function () {
     }
 
     function parse_rule() {
-      // .data方法用于获取'data-'开头的属性字符串
+      // .data方法专门用于用于获取'data-'开头的属性字符串
       // 'min:18|maxlength:10'
-      var rule_string = $ele.data('rule');
-      if (!rule_string) return;
+      var rule_string = $ele.data('rule');  //相当于获取'data-rule'"
+      if (!rule_string) return;  //没有rule
 
-      // .split方法 分割
-      // 'min:18','maxlength:10'
-      var rule_arr = rule_string.split('|');
+      // .split()方法 分割
+      var rule_arr = rule_string.split('|');  //返回一个数组
+      // rule_arr['min:18','maxlength:10']
       for (var i = 0; i < rule_arr.length; i++) {
         var item_str = rule_arr[i];
-        // 'min','18'
         var item_arr = item_str.split(':');
+        // item_arr['min','18']
+        rule[item_arr[0]] = JSON.parse(item_arr[1]);  //通过JSON.parse()来确定返回值的类型
         // rule['min'] = '18'
-        // JSON.parse
-        rule[item_arr[0]] = JSON.parse(item_arr[1]);
+        // rule{min:18}
       }
     }
 
