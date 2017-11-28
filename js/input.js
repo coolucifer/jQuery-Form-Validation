@@ -23,7 +23,7 @@ $(function () {
       find_ele();
       get_error_ele();
       parse_rule();
-      me.load_validator();
+      me.load_validator();   //暴露出去的加载验证函数
       listen();
     }
 
