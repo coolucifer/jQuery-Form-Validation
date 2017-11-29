@@ -11,8 +11,9 @@ $(function () {
     inputs.push(tmp);
   })
   
+  //在表单提交的时候进行验证
   $form.on('submit', function(event){
-    event.preventDefault();
+    event.preventDefault();  //防止刷新
     $inputs.trigger('blur');
 
     for(var i = 0; i < inputs.length; i ++){

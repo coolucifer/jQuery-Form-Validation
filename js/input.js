@@ -27,6 +27,7 @@ $(function () {
       listen();
     }
 
+    //在输入框blur的时候验证
     function listen() {
       $ele.on('blur', function () {
         var valid = me.validator.is_valid(me.get_val());
@@ -47,11 +48,11 @@ $(function () {
 
     //确定$ele是哪个
     function find_ele() {
-      if (selector instanceof jQuery) {
-        $ele = selector;
+      if (selector instanceof jQuery) {  //如果输入的是jQuery对象,如$("#abc")
+        $ele = selector;  //$ele=$("#abc")
       }
       else {
-        $ele = $(selector);
+        $ele = $(selector); 
       }
     }
 
