@@ -58,6 +58,7 @@ $(function () {
 
     function parse_rule() {
       // .data方法专门用于用于获取'data-'开头的属性字符串
+      // .data()方法为jQuery独有, 原生可以使用$ele.getSet.rule, 或者$ele.getAttribute('data-rule')来获取
       // 'min:18|maxlength:10'
       var rule_string = $ele.data('rule');  //相当于获取'data-rule'"
       if (!rule_string) return;  //没有rule
